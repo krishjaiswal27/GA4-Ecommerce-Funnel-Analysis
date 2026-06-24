@@ -15,7 +15,7 @@ Most public "funnel analysis" walkthroughs skip a real risk: a funnel built at t
 ### Methodology:
 1. **BigQuery** — pulled and flattened 3+ months of raw GA4 event data, unnesting the nested `event_params` array to extract session IDs and build a session-scoped funnel table (one row per visit). This step specifically corrected a lifetime-vs-session conflation issue: an earlier user-level version of this funnel would have counted unrelated visits weeks apart as a single completed conversion.
 2. **PostgreSQL** — loaded the flattened funnel and queried overall conversion, device/source/country segment performance, and revenue per session (CTEs, conditional aggregation, window functions).
-3. **Power BI** — built a 4-page interactive dashboard (executive summary, device analysis, source analysis, recommendations) so the funnel is browsable by segment, not just a static report.
+3. **Power BI** — built a 3-page interactive dashboard (executive summary, device analysis, source analysis) so the funnel is browsable by segment, not just a static report.
 4. **Python** — ran chi-square significance tests to confirm which segment gaps were real versus noise, then built a revenue-optimization model estimating incremental purchases and revenue from a 1 / 5 / 10 percentage-point conversion lift at each funnel stage.
 
 ### Skills:
